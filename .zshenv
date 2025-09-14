@@ -102,7 +102,7 @@ export PATH
 # ===================
 # Oh My Posh prompt
 if command -v oh-my-posh &> /dev/null; then
-    eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/pure.omp.json')"
+    eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/iammucahit/oh-my-posh/refs/heads/main/themes/pure.omp.json')"
 fi
 
 # Zoxide (smarter cd)
