@@ -16,9 +16,10 @@ My personal config files
 
 - [stow](https://github.com/aspiers/stow) (optional)
 - [git](https://wiki.archlinux.org/title/git)
+- [vim](https://www.vim.org) > **8**
 - [tmux](https://wiki.archlinux.org/title/tmux) > **2.6**
 - [zsh](https://wiki.archlinux.org/title/zsh)
-- [Nerd Font](https://www.nerdfonts.com/) as your terminal font.
+- A [Nerd Font](https://www.nerdfonts.com/) as your terminal font.
 
 ### Installation
 
