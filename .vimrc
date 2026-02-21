@@ -6,6 +6,7 @@ set mouse=a
 set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
+let g:netrw_banner = 0
 
 " Enable Windows clipboard support in WSL Vim using win32yank
 if system('uname -r') =~ 'microsoft' " We're inside WSL
