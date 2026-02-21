@@ -36,7 +36,6 @@ stow .
 
 - [fzf](https://github.com/junegunn/fzf) >= **0.48.0**
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
-- [oh-my-posh](https://ohmyposh.dev/)
 
 ### vim
 
@@ -47,3 +46,6 @@ stow .
 ## Notes
 
 - tmux prefix keymap is `` ` `` (backtick)
+- arrow keys disabled in vim
+- no plugin manager used
+- terminal theme not included
