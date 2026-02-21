@@ -49,4 +49,4 @@ stow tmux zsh vim
 - arrow keys disabled in vim
 - no plugin manager used
 - terminal theme not included
-- to paste or yank from vim to or from windows use <Leader>y/p
+- to paste or yank from vim to or from windows use [Leader]y/p
