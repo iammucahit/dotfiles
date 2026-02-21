@@ -1,3 +1,4 @@
+let mapleader = " "
 set nu
 set wrap
 set linebreak
@@ -13,20 +14,12 @@ if system('uname -r') =~ 'microsoft' " We're inside WSL
   let g:win32yank_path = expand('~/.local/bin/win32yank.exe')
 
   if executable(g:win32yank_path)
+    " Press leader+y to send current yank to Windows
+    nnoremap <leader>y :call system(g:win32yank_path . ' -i', getreg('"'))<CR>
+    vnoremap <leader>y "qy:call system(g:win32yank_path . ' -i', getreg('q'))<CR>
 
-    " Auto yank to Windows clipboard when using 'y'
-    augroup WSLYank
-      autocmd!
-      autocmd TextYankPost * if v:event.operator ==# 'y' | call system(g:win32yank_path . ' -i', getreg('"')) | endif
-    augroup END
-
-    " Paste from Windows clipboard on 'p' in normal and visual modes
-    nnoremap p :call setreg('"', system(g:win32yank_path . ' -o'))<CR>p
-    xnoremap p :<C-U>call setreg('"', system(g:win32yank_path . ' -o'))<CR>gvp
-    " Optional: also override 'P' if you use that
-    nnoremap P :call setreg('"', system(g:win32yank_path . ' -o'))<CR>P
-    xnoremap P :<C-U>call setreg('"', system(g:win32yank_path . ' -o'))<CR>gvP
-
+    " Press leader+p to pull from Windows and paste
+    nnoremap <leader>p :call setreg('"', system(g:win32yank_path . ' -o'))<CR>p
   endif
 endif
 
@@ -39,5 +32,4 @@ function! HardMode()
   endfor
 endfunction
 
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
+call HardMode()
