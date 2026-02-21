@@ -24,7 +24,6 @@ My personal config files
 ### Installation
 
 ```bash
-mkdir ~/.config
 git clone https://github.com/iammucahit/dotfiles.git
 cd dotfiles
 stow tmux zsh vim
