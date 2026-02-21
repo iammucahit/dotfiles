@@ -2,7 +2,7 @@
 
 My personal config files
 
-![Image](/screenshots/screenshot1.png?raw=true)
+![Image](/.screenshots/screenshot1.png?raw=true)
 
 ## Contents
 
