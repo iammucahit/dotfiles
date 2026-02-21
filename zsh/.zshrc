@@ -24,19 +24,21 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Prompt
 setopt PROMPT_SUBST
 git_info() {
-  local branch=$(git branch --show-current 2>/dev/null)
-  [[ -z $branch ]] && return
+  local status_info=$(git status --porcelain=v2 --branch 2>/dev/null)
+  [[ -z $status_info ]] && return
 
-  local dirty=""; [[ -n $(git status --porcelain 2>/dev/null) ]] && dirty="%F{yellow}*%f"
+  local branch=$(echo "$status_info" | grep '^# branch.head' | awk '{print $3}')
+  local ab_info=$(echo "$status_info" | grep '^# branch.ab')
   
-  local counts=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null)
   local indicators=""
-  if [[ -n $counts ]]; then
-    local ahead=$(echo $counts | awk '{print $1}')
-    local behind=$(echo $counts | awk '{print $2}')
-    [[ $ahead -gt 0 ]] && indicators+="%F{green}↑${ahead}%f"
-    [[ $behind -gt 0 ]] && indicators+="%F{red}↓${behind}%f"
+  if [[ -n $ab_info ]]; then
+    local ahead=$(echo "$ab_info" | awk '{print $3}')
+    local behind=$(echo "$ab_info" | awk '{print $4}')
+    [[ $ahead != "+0" ]] && indicators+="%F{green}↑${ahead#+}%f"
+    [[ $behind != "-0" ]] && indicators+="%F{red}↓${behind#-}%f"
   fi
+
+  local dirty=""; [[ $(echo "$status_info" | grep -v '^#' | wc -l) -gt 0 ]] && dirty="%F{yellow}*%f"
 
   echo " %F{242}on %F{cyan}$branch%f${dirty} $indicators"
 }
@@ -67,5 +69,5 @@ alias c='clear'
 
 # Cleanup
 if [[ -f ~/.zcompdump ]]; then
-  zcompile ~/.zcompdump
+  zcompile -U ~/.zcompdump
 fi
