@@ -45,7 +45,8 @@ stow tmux zsh vim
 ## Notes
 
 - tmux prefix keymap is `` ` `` (backtick)
+- vim leader key is " " (space)
 - arrow keys disabled in vim
 - no plugin manager used
 - terminal theme not included
-- vim leader key is " " (space)
+- to paste or yank from vim to or from windows use <Leader>y/p
