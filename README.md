@@ -27,7 +27,7 @@ My personal config files
 mkdir ~/.config
 git clone https://github.com/iammucahit/dotfiles.git
 cd dotfiles
-stow .
+stow tmux zsh vim
 ```
 
 ## External Dependencies
